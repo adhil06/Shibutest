@@ -1,1 +1,90 @@
+from pathlib import Path
+
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shibu.exe Has Stopped Working</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      padding: 24px; color: #f8fafc; font-family: system-ui, Arial, sans-serif;
+      background: radial-gradient(circle at top, #3730a3, #111827 58%, #020617);
+    }
+    .card {
+      width: min(680px, 100%); text-align: center; padding: 36px 26px;
+      border: 1px solid #ffffff28; border-radius: 26px;
+      background: #ffffff10; box-shadow: 0 24px 80px #0008;
+      backdrop-filter: blur(12px);
+    }
+    .emoji { font-size: 76px; }
+    h1 { font-size: clamp(2rem, 7vw, 3.7rem); margin: 10px 0; }
+    .sub { color: #c7d2fe; font-size: 1.1rem; }
+    .roast {
+      margin: 26px 0; padding: 22px; border-radius: 18px;
+      background: #0f172acc; font-size: 1.25rem; line-height: 1.55;
+      min-height: 112px; display: grid; place-items: center;
+    }
+    button {
+      border: 0; border-radius: 999px; padding: 14px 24px;
+      color: #111827; background: #fbbf24; font-weight: 800;
+      font-size: 1rem; cursor: pointer; transition: transform .15s;
+    }
+    button:hover { transform: translateY(-2px) scale(1.03); }
+    .small { margin-top: 22px; color: #a5b4fc; font-size: .85rem; }
+    .meter { margin: 20px auto 0; max-width: 360px; text-align: left; }
+    .bar { height: 12px; background: #ffffff22; border-radius: 99px; overflow: hidden; }
+    .bar span { display: block; width: 99%; height: 100%; background: linear-gradient(90deg,#f97316,#ef4444); }
+    .meter label { display: block; margin-bottom: 8px; color: #e2e8f0; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="emoji">🤡</div>
+    <p class="sub">THE OFFICIAL SHIBU DETECTION SYSTEM</p>
+    <h1>Shibu.exe</h1>
+    <p class="sub">A premium human… still running on the free trial.</p>
+
+    <div class="roast" id="roast">
+      Initialising Shibu intelligence… Please wait. This may take a while.
+    </div>
+
+    <button onclick="nextRoast()">Generate another roast 😂</button>
+
+    <div class="meter">
+      <label>Loading common sense… 1% complete</label>
+      <div class="bar"><span></span></div>
+    </div>
+
+    <p class="small">No Shibus were harmed. Only their reputation got a tiny software update.</p>
+  </main>
+
+  <script>
+    const roasts = [
+      "Shibu doesn't make mistakes. He creates unexpected features.",
+      "His Wi-Fi has better connection than his thoughts.",
+      "If procrastination were an Olympic sport, Shibu would arrive late to collect the gold.",
+      "Shibu's brain has 47 tabs open… and every single one is buffering.",
+      "Even Google says: “Did you mean someone else?”",
+      "Shibu is proof that updates are available, but not always installed.",
+      "His plans are like free trials: exciting at first, then suddenly expired.",
+      "Shibu can turn a 2-minute task into a season finale."
+    ];
+    let index = 0;
+    function nextRoast() {
+      const box = document.getElementById("roast");
+      box.textContent = roasts[index % roasts.length];
+      index++;
+    }
+    nextRoast();
+  </script>
+</body>
+</html>
+"""
+
+path = Path("/mnt/data/shibu_roast.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
 
